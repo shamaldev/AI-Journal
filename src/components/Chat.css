@@ -1,0 +1,229 @@
+.chat-container {
+    display: flex;
+    flex-direction: column;
+    position: fixed; /* Fixed positioning to take full viewport */
+    top: 60px; /* Adjust based on your App header height */
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #f9f9f9;
+  }
+  
+  .chat-header {
+    background-color: #f0f0f0;
+    padding: 10px 20px;
+    border-bottom: 1px solid #e0e0e0;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    flex-shrink: 0; /* Don't allow header to shrink */
+  }
+  
+  .user-info {
+    display: flex;
+    align-items: center;
+  }
+  
+  .user-icon-placeholder {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    background-color: #007bff;
+    color: white;
+    font-size: 16px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-right: 10px;
+  }
+  
+  .user-info span {
+    font-weight: bold;
+  }
+  
+  .message-list {
+    flex-grow: 1; /* Allows message list to take up remaining space */
+    padding: 20px;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    padding-bottom: 120px; /* Adjust based on the combined height of AI actions and input + margins */
+  }
+  
+  .message-container {
+    display: flex;
+    align-items: flex-start;
+    margin-bottom: 10px;
+    max-width: 30rem
+  }
+  
+  .avatar {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    background-color: #9e9e9e;
+    color: white;
+    font-size: 14px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-right: 10px;
+    flex-shrink: 0;
+  }
+  
+  .message-container.user .avatar {
+    background-color: #1a73e8;
+  }
+  
+  .message-content {
+    background-color: #e0f2f7; /* Light blue for AI */
+    color: #333;
+    padding: 12px 16px;
+    border-radius: 8px;
+    word-break: break-word;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+    flex-grow: 1;
+    max-width: 15rem
+  }
+  
+  .message-container.user {
+    flex-direction: row-reverse;
+    align-self: flex-end;
+  }
+  
+  .message-container.user .message-content {
+    background-color: #f0f4c3; /* Light yellow/green for user */
+    border-radius: 8px 0 8px 8px;
+  }
+  
+  .message-container.user .avatar {
+    margin-left: 10px;
+    margin-right: 0;
+  }
+  
+  .message-container.ai .message-content {
+    border-radius: 0 8px 8px 8px;
+  }
+  
+  .timestamp {
+    font-size: 0.8em;
+    color: #757575;
+    margin-top: 5px;
+  }
+  
+  .message-container.user .timestamp {
+    text-align: right;
+  }
+  
+  .typing-indicator {
+    align-self: flex-start;
+    font-style: italic;
+    color: #757575;
+    margin-top: 10px;
+    padding-left: 42px;
+  }
+  
+  .ai-actions {
+    padding: 12px 16px; /* Increased vertical padding */
+    /* border-top: 1px solid #e0e0e0;
+    background-color: #fff; */
+    display: flex;
+    gap: 8px;
+    justify-content: flex-start;
+    flex-shrink: 0;
+    position: fixed; /* Fix to the viewport bottom */
+    bottom: 60px; /* Adjust based on the height of your input area + margin */
+    left: 0;
+    right: 0;
+    z-index: 10; /* Ensure it's above input */
+    margin: 0 10px; /* Add horizontal margins */
+    margin: 0 1rem 1.3rem 1rem /* Optional: Add rounded corners */
+  }
+  
+  .ai-actions button {
+    padding: 8px 16px;
+    background-color: #f1f3f4;
+    color: #202124;
+    border: 1px solid #e0e0e0;
+    border-radius: 24px;
+    cursor: pointer;
+    font-size: 14px;
+    transition: background-color 0.2s ease;
+  }
+  
+  .ai-actions button:hover {
+    background-color: #e0e0e0;
+  }
+  
+  .message-input-area {
+    padding: 10px 16px;
+    border-top: 1px solid #e0e0e0;
+    display: flex;
+    align-items: center;
+    background-color: #fff;
+    flex-shrink: 0;
+    border-radius: 24px;
+    border: 1px solid #e0e0e0;
+    padding-left: 36px;
+    padding-right: 36px;
+    position: fixed; /* Fix to the viewport bottom */
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: 10; /* Ensure it's at the very top of fixed elements */
+    margin: 0 2rem 1rem 1rem /* Add horizontal margins to match AI actions */
+  }
+  
+  .message-input-area input {
+    flex-grow: 1;
+    padding: 12px 0;
+    border: none;
+    font-size: 16px;
+    color: #202124;
+    outline: none;
+    /* margin: 0 8px; */
+  }
+  
+  .message-input-area input::placeholder {
+    color: #757575;
+  }
+  
+  .message-input-area button {
+    padding: 10px 16px;
+    background-color: #1a73e8;
+    color: white;
+    border: none;
+    border-radius: 24px;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: 500;
+    transition: background-color 0.2s ease;
+    margin-left: 8px;
+  }
+  
+  .message-input-area button:hover {
+    background-color: #0c66c9;
+  }
+  
+  /* Pseudo-elements for icons */
+  .message-input-area::before {
+    position: absolute;
+    left: 12px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #757575;
+    font-size: 18px;
+    cursor: pointer;
+  }
+  
+  .message-input-area::after {
+     /* Using the microphone emoji */
+    position: absolute;
+    right: 12px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #757575;
+    font-size: 18px;
+    cursor: pointer;
+  }
